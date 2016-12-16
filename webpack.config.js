@@ -1,12 +1,14 @@
 var path = require('path')
 var webpack = require('webpack')
 
-module.exports = {
-  entry: './src/main.js',
+const config = module.exports = {
+  entry: {
+      app: ['./src/main.js']
+  },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, './static'),
+    publicPath: '/',
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -45,15 +47,17 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    inline: true
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: []
 }
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+  config.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
+  config.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -62,11 +66,21 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
+        drop_console: true,
+        drop_debugger: true,
         warnings: false
       }
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
-  ])
+  )
+} else {
+  config.plugins.unshift(
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
+  )
+  config.entry["app"].unshift(
+      "webpack-hot-middleware/client"
+  )
 }
