@@ -1,0 +1,60 @@
+.footer {
+  width: 100%;
+  padding: 5px 0 5px;
+  background: $color-white;
+
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .wrapper {
+    width: 1220px;
+    margin: 0 auto 0;
+
+    .logo-footer {
+      float: left;
+      margin-top: 10px;
+
+      a {
+        @include dosis-light;
+        font-size: 20px;
+        color: $color-blue;
+        text-decoration: none;
+      }
+    }
+
+    .nav-link {
+      float: right;
+
+      ul li {
+        display: inline-block;
+        margin-left: 20px;
+
+        .fa {
+          color: $color-blue;
+          transition: .5s;
+        }
+
+        .fa-linkedin-square {
+          &:hover {
+            color: #0077b5;
+          }
+        }
+
+        .fa-twitter {
+          &:hover {
+            color: #1da1f2;
+          }
+        }
+
+        .fa-facebook {
+          &:hover {
+            color: #3b5998;
+          }
+        }
+      }
+    }
+  }
+}

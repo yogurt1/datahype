@@ -1,0 +1,24 @@
+.nav {
+  float: right;
+  margin: 35px 0 0 0;
+
+  a {
+    margin: 0 0 0 20px;
+
+    display: inline-block;
+    list-style-type: none;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @include dosis-medium;
+    font-size: 14px;
+    color: $color-grey;
+
+    transition: .5s;
+
+    &:hover {
+      color: $color-blue;
+      transition: .5s;
+    }
+  }
+}

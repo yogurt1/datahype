@@ -1,0 +1,18 @@
+@mixin dosis-light {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+}
+
+@mixin dosis-regular {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+}
+
+@mixin dosis-medium {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+}
+
+$color-blue: #0097A7;
+$color-white: #FFFFFF;
+$color-grey: #595959;

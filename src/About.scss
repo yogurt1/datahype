@@ -1,0 +1,18 @@
+.about {
+  width: 60%;
+  margin: 0 auto 0;
+
+  .main-title {
+    @include dosis-medium;
+    font-size: 23px;
+    color: $color-white;
+  }
+
+  p {
+    @include dosis-light;
+    font-size: 16px;
+    color: $color-white;
+    letter-spacing: 1px;
+    text-align: justify;
+  }
+}
